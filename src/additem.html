@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<!--
+Paul J. Miller
+Project 1
+Visual Frameworks: 1207
+-->
+<html>
+<head>
+<meta charset="utf-8" />
+<meta name=description content="Very first HTML5 document." />
+<meta name=keywords content="recipee book, recipe, Visual Frameworks, Full Sail University" />
+<!-- Search Engine Bots can crawl/index our page and follow links beyond index -->
+<meta name=robots content="index, follow" />
+<meta name=viewport content="user-scalable=no, width=device-width" />
+<!-- Page Title -->
+<title>Recipe Book - Add A Recipe</title>
+</head>
+<body>
+
+<form action="" method="post">
+	<fieldset>
+<legend>Basic Information</legend>
+<ul>
+<li>
+	<label for="rcategory">Recipe Category:</label>
+	<select id="rcategory">
+		<optgroup label="Courses">
+			<option value="Breakfast">Breakfast</option>
+			<option value="Lunch">Lunch</option>
+			<option value="Dinner">Dinner</option>
+		</optgroup>
+		<optgroup label="Misc.">
+			<option value="Drink">Drink</option>
+			<option value="Desert">Desert</option>
+		</optgroup>
+	</select>
+</li>
+	<li><label for="rname">Recipe Name:</label><input type="text" id="rname" /></li>
+
+	<li>Recipe Method:
+		<ul>
+		<li><input type="checkbox" value="Microwave" id="microwave" /><label for="rmethod">Microwave</label></li>
+		<li><input type="checkbox" value="Stovetop" id="stovetop" /><label for="rmethod">Stovetop</label></li>
+		<li><input type="checkbox" value="Oven" id="oven" /><label for="rmethod">Oven</label></li>
+		<li><input type="checkbox" value="Blender" id="blender" /><label for="rmethod">Blender</label></li>
+		<li><input type="checkbox" value="Food Processor" id="FoodProcessor" /><label for="rmethod">Food Processor</label></li>
+	</li>
+</ul>
+	</fieldset>
+	<fieldset>
+	<legend>Recipe Directions & Information</legend>
+<ul>
+	<li><label for="directions">Recipe Ingredients & Directions:<br /></label><textarea id="directions"></textarea></li>
+	<li><label for="rating">Rating:<br /></label></label><input type="range" name="rating" min="1" max="10" /></li>
+	<li><label for="date">Creation Date:<br /></label><input type="date" name="date" /></li>	
+	<li><input type="hidden" value="true" /></li>
+	
+	
+</ul>
+	</fieldset>
+<input type="submit" value="Add Recipe" />
+</form>
+<br /><br />
+<a href="#">Clear Stored Data</a><br />
+<a href="#">Display Data</a><br />
+</body>
+</html>
