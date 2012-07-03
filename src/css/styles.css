@@ -1,0 +1,80 @@
+/*
+Title: Styles.css
+Author: Paul J. Miller
+Date: 07/03/2012
+VFW 1207
+Project 2
+*/
+
+body
+{
+	background-color: hsla(150, 50%, 40%, 0.5);
+}
+
+@font-face {
+font-family: 'Orbitron-Light';
+src: url('../fonts/orbitron-light-webfont.ttf') format('truetype'),
+url('../fonts/orbitron-light-webfont.eot') format('eot'),
+url('../fonts/orbitron-light-webfont.woff') format('woff'),
+url('../fonts/orbitron-light-webfont.svg#iefix') format('svg');
+}
+
+
+h1 
+{
+	margin: 10px 20px;
+	padding: 10px;
+	border: 1px solid black;
+	color: blue;
+	font-family: Times;
+	background-color: rgba(255,255,255,0.3);
+	width: 50%;
+	text-align: center;
+	font-weight: bolder;
+	border: 5px double;
+}
+
+h2 
+{
+	color: white;
+	width: 50%;
+	text-align: center;
+	font-family: Times;
+	font-weight: normal;
+}
+
+p
+{
+	color: blue;
+	font-style: ;
+	font-family: Orbitron-Light;
+	font-size: 14px;
+	font-weight: bold;
+	line-height: 1.4em;
+	text-align: center;
+	text-indent: ;
+	text-transform: ;
+	text-decoration: ;
+}
+
+a
+{
+	outline: 1px dotted black;
+	text-decoration: none;
+}
+
+a:hover
+{
+	color: black;
+	outline: none;
+}
+
+form
+{
+	
+}
+
+label
+{
+	padding: 1px;
+}
