@@ -24,7 +24,7 @@ Visual Frameworks: 1207
 <form action="" method="post">
 	<fieldset>
 <legend>Basic Information</legend>
-<ul>
+<ul id="info">
 <li>
 	<label for="rcategory">Recipe Category:</label>
 	<select id="rcategory">
@@ -42,7 +42,7 @@ Visual Frameworks: 1207
 	<li><label for="rname">Recipe Name:</label><input type="text" id="rname" /></li>
 
 	<li>Recipe Method:
-		<ul>
+		<ul id="cooking">
 		<li><input type="checkbox" value="Microwave" id="microwave" /><label for="rmethod">Microwave</label></li>
 		<li><input type="checkbox" value="Stovetop" id="stovetop" /><label for="rmethod">Stovetop</label></li>
 		<li><input type="checkbox" value="Oven" id="oven" /><label for="rmethod">Oven</label></li>
@@ -53,7 +53,7 @@ Visual Frameworks: 1207
 	</fieldset>
 	<fieldset>
 	<legend>Recipe Directions & Information</legend>
-<ul>
+<ul id="directions">
 	<li><label for="directions">Recipe Ingredients & Directions:<br /></label><textarea id="directions"></textarea></li>
 	<li><label for="rating">Rating:<br /></label></label><input type="range" name="rating" min="1" max="10" /></li>
 	<li><label for="date">Creation Date:<br /></label><input type="date" name="date" /></li>	
@@ -62,10 +62,11 @@ Visual Frameworks: 1207
 	
 </ul>
 	</fieldset>
-<input type="submit" value="Add Recipe" />
+<input type="submit" value="Add Recipe" id="submit" />
 </form>
 <br /><br />
-<a href="#">Clear Stored Data</a><br />
-<a href="#">Display Data</a><br />
+<a href="#" id="clearData">Clear Stored Data</a><br />
+<a href="#" id="displayData">Display Data</a><br />
+<script src="js/main.js" type="text/javascript"></script>
 </body>
 </html>
