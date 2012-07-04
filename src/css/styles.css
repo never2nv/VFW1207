@@ -26,7 +26,7 @@ h1
 	padding: 10px;
 	border: 1px solid black;
 	color: blue;
-	font-family: Times;
+	font-family: Tahoma, Geneva, sans-serif;
 	background-color: rgba(255,255,255,0.3);
 	width: 50%;
 	text-align: center;
@@ -47,7 +47,7 @@ p
 {
 	color: blue;
 	font-style: ;
-	font-family: Orbitron-Light;
+	font-family: Orbitron-Light, Tahoma, Geneva, sans-serif;
 	font-size: 14px;
 	font-weight: bold;
 	line-height: 1.4em;
