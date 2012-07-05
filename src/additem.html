@@ -9,13 +9,17 @@ Visual Frameworks: 1207
 <meta charset="utf-8" />
 <meta name=description content="Very first HTML5 document." />
 <meta name=keywords content="recipee book, recipe, Visual Frameworks, Full Sail University" />
+
 <!-- Force I.E. out of compatibility mode-->
 <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+
 <!-- Search Engine Bots can crawl/index our page and follow links beyond index -->
 <meta name=robots content="index, follow" />
 <meta name=viewport content="user-scalable=no, width=device-width" />
+
 <!-- Page Title -->
 <title>Recipe Book - Add A Recipe</title>
+
 <!-- Import & Ref CSS Stylesheet -->
 <link href="css/styles.css" rel="stylesheet" />
 </head>
@@ -25,29 +29,16 @@ Visual Frameworks: 1207
 	<fieldset>
 <legend>Basic Information</legend>
 <ul id="info">
-<li>
-	<label for="rcategory">Recipe Category:</label>
-	<select id="rcategory">
-		<optgroup label="Courses">
-			<option value="Breakfast">Breakfast</option>
-			<option value="Lunch">Lunch</option>
-			<option value="Dinner">Dinner</option>
-		</optgroup>
-		<optgroup label="Misc.">
-			<option value="Drink">Drink</option>
-			<option value="Desert">Desert</option>
-		</optgroup>
-	</select>
-</li>
+<li id="select"><label for="rcategory">Recipe Category:</label><br /></li>
 	<li><label for="rname">Recipe Name:</label><input type="text" id="rname" /></li>
 
 	<li>Recipe Method:
 		<ul id="cooking">
-		<li><input type="checkbox" value="Microwave" id="microwave" /><label for="rmethod">Microwave</label></li>
-		<li><input type="checkbox" value="Stovetop" id="stovetop" /><label for="rmethod">Stovetop</label></li>
-		<li><input type="checkbox" value="Oven" id="oven" /><label for="rmethod">Oven</label></li>
-		<li><input type="checkbox" value="Blender" id="blender" /><label for="rmethod">Blender</label></li>
-		<li><input type="checkbox" value="Food Processor" id="FoodProcessor" /><label for="rmethod">Food Processor</label></li>
+		<li><input type="checkbox" value="Microwave" id="microwave" /><label for="microwave">Microwave</label></li>
+		<li><input type="checkbox" value="Stovetop" id="stovetop" /><label for="stovetop">Stovetop</label></li>
+		<li><input type="checkbox" value="Oven" id="oven" /><label for="oven">Oven</label></li>
+		<li><input type="checkbox" value="Blender" id="blender" /><label for="blender">Blender</label></li>
+		<li><input type="checkbox" value="Food Processor" id="FoodProcessor" /><label for="FoodProcessor">Food Processor</label></li>
 	</li>
 </ul>
 	</fieldset>
@@ -67,6 +58,8 @@ Visual Frameworks: 1207
 <br /><br />
 <a href="#" id="clearData">Clear Stored Data</a><br />
 <a href="#" id="displayData">Display Data</a><br />
+
+<!-- Import & Ref Main Javascript File -->
 <script src="js/main.js" type="text/javascript"></script>
 </body>
 </html>
