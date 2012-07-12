@@ -40,12 +40,32 @@ VFW 1207 - Project 2
 	}
 	*/
 	
-	
+// Find value of checkbox
 	function getCheckBoxValue(){
 		if($('favorite').checked){
 			favoriteValue = $('favorite').value;	
 		} else{
 			favoriteValue = "No"
+		}
+	}
+	
+	function toggleControls(n){
+		switch(n){
+			case "on":
+				$('recipeForm').style.display = "none";
+				$('clear').style.display = "inline";
+				$('displayData').style.display = "none";
+				$('addNew').style.display = "inline";
+				break;
+			case "off":
+				$('recipeForm').style.display = "block";
+				$('clear').style.display = "inline";
+				$('displayData').style.display = "inline";
+				$('addNew').style.display = "none";
+				$('items').style.display = "none";
+				break;
+			default:
+				return: false;
 		}
 	}
 	
@@ -74,10 +94,34 @@ VFW 1207 - Project 2
 			
 		// Saving data into local storage (Use Stringify to convert object into a string.)
 			localStorage.setItem(id, JSON.stringify(item));
-			alert("Contact Saved");
-						
+			alert("Contact Saved");		
 			
-			
+	}
+	
+	function getData(){
+	toggleControls("on");
+		// Write data from local storage to the browser.
+			var makeDiv = document.createElement('div');
+			makeDiv.setAttribute("id", "items");
+			var makeList = document.createElement('ul');
+			makeDiv.appendChild(makeList);
+			document.body.appendChild(makeDiv);
+				$('items').style.display = "block";
+			for (var i=0; len=localStorage.length; i<len; i++){
+				var makeli = document.createElement('li');
+				makeList.appendChild(makeli);
+				var key = localStorage.key(i);
+				var value = localStorage.getItem(key);
+			// Opposite of stringify, parsing tunrs vlaue into an object, rather than turning it into a string like stringify. REMEMEBR!
+				var obj = JSON.parse(value);
+				var makeSubList = document.createElement('ul');
+				makeli.appendChild(makeSubList);
+				for (var n in obj)(
+				var makeSubLi = document.createElement('li');
+				makeSubList.appendChild(makeSubLi);
+				var optSubText = obj[n][0]+" "+obj[n][1];
+				makeSubLi.innerHTML = optSubText;	
+			}
 	}
 
 	//Variable defaults
