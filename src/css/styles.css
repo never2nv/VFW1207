@@ -78,3 +78,8 @@ label
 {
 	padding: 1px;
 }
+
+select
+{
+	display:block;
+}
