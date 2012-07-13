@@ -4,7 +4,7 @@ VFW 1207 - Project 2
 07/09/2012
 */
 	//Wait for DOM to be ready
-	window.addEventListener("DOMContentLoaded", function(){
+	window.addEventListener("DOMContentLoaded", function () {
 
 	//getElementById Function
 	function $(x){
@@ -100,6 +100,9 @@ VFW 1207 - Project 2
 	
 	function getData(){
 	toggleControls("on");
+	if(localStorage.length === 0){
+		alert("I find your lack of data disturbing. There is no data saved to local storage!");
+	}
 		// Write data from local storage to the browser.
 			var makeDiv = document.createElement('div');
 			makeDiv.setAttribute("id", "items");
@@ -123,6 +126,17 @@ VFW 1207 - Project 2
 				makeSubLi.innerHTML = optSubText;	
 			}
 	}
+	
+	function clearLocal(){
+		if(localStorage.length === 0){
+			alert("No data to clear.");
+		}else {
+			localStorage.clear();
+			alert("All recipe's are deleted.");
+			window.location.reload();
+			return false;
+		}
+	}
 
 	//Variable defaults
 	var recipeCategory = ["--Choose A Recipe Category--", "Breakfast", "Lunch", "Dinner", "Desert", "Drink"];
@@ -130,13 +144,13 @@ VFW 1207 - Project 2
 		favoriteValue = No;
 	makeCats();
 	
-/*
+
 	//Set Link & Submit Click Events / NOT USED ATM
 	var displayData = $('displaydata');
 	displayData.addEventListener("click", getData);
 	var clearData = $('clearData');
 	clearData.addEventListener("click", clearStorage);
-*/
+
 	var save = $('submit');
 	save.addEventListener("click", storeData);
 

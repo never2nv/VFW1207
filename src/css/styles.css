@@ -71,7 +71,9 @@ a:hover
 
 form
 {
-	
+	display:inline;
+	padding: 2px;
+	border: 1px solid;
 }
 
 label
