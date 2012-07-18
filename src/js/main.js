@@ -5,7 +5,6 @@ VFW 1207 - Project 2
 */
 	//Wait for DOM to be ready
 	window.addEventListener("DOMContentLoaded", function () {
-
 	//getElementById Function
 	function $(x){
 		var grabElement = document.getElementById('x');
@@ -19,7 +18,7 @@ VFW 1207 - Project 2
 			makeSelect = document.createElement('select');
 			makeSelect.setAttribute("id", "groups");
 		
-		for (var i=0, j=recipeCategory.length; i<j; i++){
+		for(var i=0, j=recipeCategory.length; i<j;i++){
 			var makeOption = document.createElement('option');
 			var optText = recipeCategory[i];
 			makeOption.setAttribute("value", optText);
@@ -65,7 +64,7 @@ VFW 1207 - Project 2
 				$('items').style.display = "none";
 				break;
 			default:
-				return: false;
+				return false;
 		}
 	}
 	
@@ -110,7 +109,7 @@ VFW 1207 - Project 2
 			makeDiv.appendChild(makeList);
 			document.body.appendChild(makeDiv);
 				$('items').style.display = "block";
-			for (var i=0; len=localStorage.length; i<len; i++){
+			for(var i=0, len=localStorage.length; i<len;i++){
 				var makeli = document.createElement('li');
 				makeList.appendChild(makeli);
 				var key = localStorage.key(i);
@@ -119,8 +118,8 @@ VFW 1207 - Project 2
 				var obj = JSON.parse(value);
 				var makeSubList = document.createElement('ul');
 				makeli.appendChild(makeSubList);
-				for (var n in obj)(
-				var makeSubLi = document.createElement('li');
+				for(var n in obj){
+				var makeSubli = document.createElement('li');
 				makeSubList.appendChild(makeSubLi);
 				var optSubText = obj[n][0]+" "+obj[n][1];
 				makeSubLi.innerHTML = optSubText;	
@@ -154,7 +153,6 @@ VFW 1207 - Project 2
 	var save = $('submit');
 	save.addEventListener("click", storeData);
 
-
+};
 
 });
-
