@@ -5,6 +5,7 @@ VFW 1207 - Project 2
 */
 	//Wait for DOM to be ready
 	window.addEventListener("DOMContentLoaded", function () {
+	
 	//getElementById Function
 	function $(x){
 		var grabElement = document.getElementById('x');
@@ -97,6 +98,7 @@ VFW 1207 - Project 2
 			
 	}
 	
+	// Get data from local storage.
 	function getData(){
 	toggleControls("on");
 	if(localStorage.length === 0){
@@ -111,6 +113,7 @@ VFW 1207 - Project 2
 				$('items').style.display = "block";
 			for(var i=0, len=localStorage.length; i<len;i++){
 				var makeli = document.createElement('li');
+				var linksLi = document.createElement('li'); 
 				makeList.appendChild(makeli);
 				var key = localStorage.key(i);
 				var value = localStorage.getItem(key);
@@ -122,10 +125,76 @@ VFW 1207 - Project 2
 				var makeSubli = document.createElement('li');
 				makeSubList.appendChild(makeSubLi);
 				var optSubText = obj[n][0]+" "+obj[n][1];
-				makeSubLi.innerHTML = optSubText;	
+				makeSubLi.innerHTML = optSubText;
+				makeSubList.appendChild(linksLi);
 			}
+			makeItemLinks(localStorage.key(i), linksLi); // Create edit/delete links for local storage.
 	}
 	
+	// Make Item Links: created edit/delete links for local storage.
+	function makeItemLinks(key, linksLi){
+		// Edit single item link
+		var editLink = document.createElement('a');
+		editLink.href = "#";
+		editLink.key = key;
+		var editText = "Edit Recipe";
+		editLink.addEventListener("click", editItem);
+		editLink.innerHTML = editText;
+		linksLi.appendChild(editLink);
+		
+		// Separates edit/delete links on separate lines! EPIC IDEA, line break! :) 
+		var BreakTag = document.createElement('br');
+		linksli.appendChild(breakTag);
+		
+		// Delete single item link
+		var deleteLink = document.createElement('a');
+		deleLink.href = "#";
+		deleteLink.key = key;
+		var deleteText = "Delete Recipe";
+		deleteLink.addEventListener("click", deleteItem);
+		deleteLink.innerHTML = deleteText;
+		linksLi.appendChild(deleteLink);
+	}
+	
+	function editItem(){
+		// Grab data of item from local storage
+		var value = localStorage.getItem(this.key);
+		var item = JSON.parse(value);
+		
+		// Show forum
+		toggleControls("off");
+		
+		// Populate form fields with Item info.	
+		$('groups').value = item.group[1];
+		$('rname').value = item.rname[1];
+		$('cooking').value = item.cooking[1];
+		var checkBox = document.forms[0].cooking;
+		for(var i=0; i<checkBox.length; i++){
+			if(checkBox[i].value == "Microwave" && item.cooking[1] == "microwave"){
+				checkBox[i].setAttribute("checked", "checked");
+				if(checkBox[i].value == "Stovetop" && item.cooking[1] == "stovetop"){
+				checkBox[i].setAttribute("checked", "checked");
+				if(checkBox[i].value == "Oven" && item.cooking[1] == "oven"){
+				checkBox[i].setAttribute("checked", "checked");
+				if(checkBox[i].value == "Blender" && item.cooking[1] == "blender"){
+				checkBox[i].setAttribute("checked", "checked");
+				if(checkBox[i].value == "FoodProcessor" && item.cooking[1] == "FoodProcessor"){
+				checkBox[i].setAttribute("checked", "checked");
+			} else if(null){
+				return false;
+			}
+		}
+		
+		if(item.favorite[1] == "Yes"){
+			$('fav').setAttribute("checked", "checked");
+		}
+		
+		$('directions').value = item.directions[1];
+		$('rating').value = item.iq[1];
+		$('date').value = item.date[1];
+	}
+	
+	// Clear local storage function
 	function clearLocal(){
 		if(localStorage.length === 0){
 			alert("No data to clear.");
