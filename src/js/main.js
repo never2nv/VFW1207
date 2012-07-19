@@ -1,7 +1,7 @@
 /*
 Paul J. Miller
-VFW 1207 - Project 2
-07/09/2012
+VFW 1207 - Project 3
+07/17/2012
 */
 	//Wait for DOM to be ready
 	window.addEventListener("DOMContentLoaded", function () {
@@ -69,8 +69,16 @@ VFW 1207 - Project 2
 		}
 	}
 	
-	function storeData(){
+	function storeData(key){
+	// If no key then it will generate a new key
+	if(!key){
 		var id			= Math.floor(Math.random()*100000001);
+	}else{
+	// Otherwise set id to the pre-existing key that's beeing edited, and can save over the original data. 
+	// Same key passed through/from editReciepe event listener. Passed to storeData function :) nifty!!!!
+		id = key;
+	}
+		
 		// Gather up all our form field values and store in an object.
 		// Object properties will contain array with form label and input values.
 		
@@ -192,6 +200,15 @@ VFW 1207 - Project 2
 		$('directions').value = item.directions[1];
 		$('rating').value = item.iq[1];
 		$('date').value = item.date[1];
+		
+		// Remove initial savedata listener button.
+		save.removeEventListener("click", storeData);
+		// Change submit button value => edit
+		$('submit').value = "Edit Recipe";
+		var editRecipe = $('submit');
+		// Save tracked key of this function as property of editRecipe event. So it saves only values that have been edited.
+		editRecipe.addEventListener("click", validate);
+		editRecipe.key = this.key;
 	}
 	
 	// Clear local storage function
@@ -205,11 +222,66 @@ VFW 1207 - Project 2
 			return false;
 		}
 	}
+	
+	// Validate Edited values of recipe.
+	function validate(e){
+		// Define what should be checked
+		var getGroup = $('groups'),
+		    getRname = $('rname'),
+		    getDirections = $('directions'),
+		    getDate = $('date');
+		    getGroup.style.border = "1px solid black";
+		    getRname.style.border = "1px solid black";
+		    getDirections.style.border = "1px solid black";
+		    
+		    // Reset error messages
+		    errorMsg.innerHTML = "";
+		    
+
+		// Get Error Messages
+		var errorArray = [];
+		// Recipe Category/Group Validation
+		if(getGroup=="--Choose A Recipe Category--"){
+			var groupError = "Please choose a recipe category.";
+			getGroup.style.border = "1px solid red";
+			errorArray.push(groupError);
+		}	
+		// Recipe name validation
+		if(getRname==""){
+			var rNameError = "Please enter a recipe name.";
+			getRname.style.border = "1px solid red";
+			errorArray.push(rNameError);
+		}
+		// Recipe Directions validation	
+		if(getDirections==""){
+			var directionsError = "Please enter the recipe directions.";
+			getDirections.style.border = "1px solid red";
+			errorArray.push(rNameError);			
+		}
+		// If errors are present, display on screen
+		if(errorArray.length >= 1) {
+			for(var i=0;j=errorArray.length; i < j; i++){
+				var text = document.createElement('li');
+				text.innerHTML = errorArray[i];
+				errorMsg.appendChild(text);
+			}
+
+		e.preventDefault();
+		return false;
+	}else{
+	// No errors, then save the data to local storage.
+		storeData(this.key);	// Send key value from editData function, passed through editRecipe even listener as a property.
+	}
+	
+  }
 
 	//Variable defaults
-	var recipeCategory = ["--Choose A Recipe Category--", "Breakfast", "Lunch", "Dinner", "Desert", "Drink"];
-		// favoriteValue;   NOT USED
-		favoriteValue = No;
+	var recipeCategory = ["--Choose A Recipe Category--", "Breakfast", "Lunch", "Dinner", "Desert", "Drink"],
+		// favoriteValue,   NOT USED
+		favoriteValue = No,
+		errorMsg = $('error')
+		
+		;
 	makeCats();
 	
 
@@ -220,8 +292,4 @@ VFW 1207 - Project 2
 	clearData.addEventListener("click", clearStorage);
 
 	var save = $('submit');
-	save.addEventListener("click", storeData);
-
-};
-
-});
+	save.addEventListener("click", validate);

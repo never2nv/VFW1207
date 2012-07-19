@@ -28,9 +28,10 @@ Visual Frameworks: 1207
 <form action="" method="post" id="recipeForm">
 	<fieldset>
 <legend>Basic Information</legend>
+<ul id="errors"></ul>
 <ul id="info">
-<li id="select"><label for="rcategory">Recipe Category:</label><br /></li>
-	<li><label for="rname">Recipe Name:</label><input type="text" id="rname" /></li>
+<li id="select"><label for="rcategory">*Recipe Category:</label><br /></li>
+	<li><label for="rname">*Recipe Name:</label><input type="text" id="rname" /></li>
 
 	<li>Recipe Methods:
 		<ul id="cooking">
@@ -43,7 +44,7 @@ Visual Frameworks: 1207
 </ul>
 	</fieldset>
 	<fieldset>
-	<legend>Recipe Directions & Information</legend>
+	<legend>*Recipe Directions & Information</legend>
 <ul id="directions">
 	<li><label for="directions">Recipe Ingredients & Directions:<br /></label><textarea id="directions"></textarea></li>
 	<li><label for="rating">Rating:<br /></label></label><input type="range" name="rating" min="1" max="10" /></li>
