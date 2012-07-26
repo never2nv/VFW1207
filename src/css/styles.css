@@ -8,7 +8,7 @@ Project 2
 
 body
 {
-	background-color: hsla(150, 50%, 40%, 0.5);
+	background-color: hsla(100, 50%, 40%, 0.5);
 }
 
 @font-face {
@@ -25,7 +25,7 @@ h1
 	margin: 10px 20px;
 	padding: 10px;
 	border: 1px solid black;
-	color: blue;
+	color: gray;
 	font-family: Tahoma, Geneva, sans-serif;
 	background-color: rgba(255,255,255,0.3);
 	width: 50%;
@@ -45,7 +45,7 @@ h2
 
 p
 {
-	color: blue;
+	color: gray;
 	font-style: ;
 	font-family: Orbitron-Light, Tahoma, Geneva, sans-serif;
 	font-size: 14px;

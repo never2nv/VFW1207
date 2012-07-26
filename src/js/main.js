@@ -110,7 +110,8 @@ VFW 1207 - Project 3
 	function getData(){
 	toggleControls("on");
 	if(localStorage.length === 0){
-		alert("I find your lack of data disturbing. There is no data saved to local storage!");
+		alert("I find your lack of data disturbing! Therefore, I have loaded default data for you!");
+		autoFillData();
 	}
 		// Write data from local storage to the browser.
 			var makeDiv = document.createElement('div');
@@ -129,14 +130,37 @@ VFW 1207 - Project 3
 				var obj = JSON.parse(value);
 				var makeSubList = document.createElement('ul');
 				makeli.appendChild(makeSubList);
+				getImage();
 				for(var n in obj){
-				var makeSubli = document.createElement('li');
-				makeSubList.appendChild(makeSubLi);
-				var optSubText = obj[n][0]+" "+obj[n][1];
-				makeSubLi.innerHTML = optSubText;
-				makeSubList.appendChild(linksLi);
+					var makeSubli = document.createElement('li');
+					makeSubList.appendChild(makeSubLi);
+					var optSubText = obj[n][0]+" "+obj[n][1];
+					makeSubLi.innerHTML = optSubText;
+					makeSubList.appendChild(linksLi);
 			}
 			makeItemLinks(localStorage.key(i), linksLi); // Create edit/delete links for local storage.
+	}
+	
+	//Get image for the correct category/group of recipe
+	function getImage(catName, makeSubList){
+		var imageLi = document.createElement('li');
+		makeSubList.appendChild(imageLi);
+		var newImg = document.createElement('img');
+		var setSrc = newImg.setAttribute("src", "images/"+ catName + ".png");
+		imageLi.appendChild(newImg);
+	}
+	
+	// Get Image
+	
+	
+	// Auto Populate Local Storage
+	function autoFillData(){
+		//JSON Object data is populated via main/json.js ; Store JSON data into local storage!
+		for(var n in json){
+			var id = Math.floor(Math.random()*100000001);
+			localStorage.setItem(id, JSON.stringify(json[n]));
+		}
+		
 	}
 	
 	// Make Item Links: created edit/delete links for local storage.
@@ -211,6 +235,18 @@ VFW 1207 - Project 3
 		editRecipe.key = this.key;
 	}
 	
+	
+	function deleteItem(){
+		var confirm = confirm("Are you sure you want to delete this recipe? Press cancel to abort deletion.");
+		if(confirm){
+			localStorage.removeItem(this.key);
+			window.location.reload();
+			alert("Recipe was deleted successfully!");
+		}else{
+			alert("Deletion of recipe has been CANCELED! Recipe left in-tact!");
+		}
+	}
+	
 	// Clear local storage function
 	function clearLocal(){
 		if(localStorage.length === 0){
@@ -276,7 +312,7 @@ VFW 1207 - Project 3
   }
 
 	//Variable defaults
-	var recipeCategory = ["--Choose A Recipe Category--", "Breakfast", "Lunch", "Dinner", "Desert", "Drink"],
+	var recipeCategory = ["--Choose A Recipe Category--", "Breakfast", "Lunch", "Dinner", "Dessert", "Drink"],
 		// favoriteValue,   NOT USED
 		favoriteValue = No,
 		errorMsg = $('error')
