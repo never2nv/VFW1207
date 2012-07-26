@@ -3,23 +3,29 @@ Paul J. Miller
 VFW 1207 - Project 3
 07/17/2012
 */
+
+
+// Ignore this comment line for now, just using it to debug most of this sloppy code I have done :(
+/*jslint continue: true, undef: true, unparam: true, sloppy: true, white: true, fragment: true, passfail: false, maxerr: 999 */
+
+
 	//Wait for DOM to be ready
 	window.addEventListener("DOMContentLoaded", function () {
-	
+
 	//getElementById Function
-	function $(x){
+	function $(x) {
 		var grabElement = document.getElementById('x');
 		return grabElement;	
 	}
 	
 	//Create select field element and populate with options.
-	function makeCats(){
+	function makeCats() {
 		var formTag = document.getElementsByTagName("form"), // formTag IS AN ARRAY OF ALL THE FORM TAGS!!!!!.
 			selectLi = $('select'),
 			makeSelect = document.createElement('select');
 			makeSelect.setAttribute("id", "groups");
 		
-		for(var i=0, j=recipeCategory.length; i<j;i++){
+		for (var i=0, j=recipeCategory.length; i<j;i++){
 			var makeOption = document.createElement('option');
 			var optText = recipeCategory[i];
 			makeOption.setAttribute("value", optText);
@@ -107,7 +113,7 @@ VFW 1207 - Project 3
 	}
 	
 	// Get data from local storage.
-	function getData(){
+	function getData() {
 	toggleControls("on");
 	if(localStorage.length === 0){
 		alert("I find your lack of data disturbing! Therefore, I have loaded default data for you!");
@@ -130,7 +136,7 @@ VFW 1207 - Project 3
 				var obj = JSON.parse(value);
 				var makeSubList = document.createElement('ul');
 				makeli.appendChild(makeSubList);
-				getImage();
+				getImage(obj.group[1], makeSubList);
 				for(var n in obj){
 					var makeSubli = document.createElement('li');
 					makeSubList.appendChild(makeSubLi);
@@ -149,10 +155,6 @@ VFW 1207 - Project 3
 		var setSrc = newImg.setAttribute("src", "images/"+ catName + ".png");
 		imageLi.appendChild(newImg);
 	}
-	
-	// Get Image
-	
-	
 	// Auto Populate Local Storage
 	function autoFillData(){
 		//JSON Object data is populated via main/json.js ; Store JSON data into local storage!
@@ -296,7 +298,7 @@ VFW 1207 - Project 3
 		}
 		// If errors are present, display on screen
 		if(errorArray.length >= 1) {
-			for(var i=0;j=errorArray.length; i < j; i++){
+			for(var i=0, j=errorArray.length; i<j;i++){
 				var text = document.createElement('li');
 				text.innerHTML = errorArray[i];
 				errorMsg.appendChild(text);
@@ -315,9 +317,8 @@ VFW 1207 - Project 3
 	var recipeCategory = ["--Choose A Recipe Category--", "Breakfast", "Lunch", "Dinner", "Dessert", "Drink"],
 		// favoriteValue,   NOT USED
 		favoriteValue = No,
-		errorMsg = $('error')
+		errorMsg = $('error');
 		
-		;
 	makeCats();
 	
 
