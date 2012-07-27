@@ -331,4 +331,3 @@ VFW 1207 - Project 3
 
 	var save = $('submit');
 	save.addEventListener("click", validate);
-	}
