@@ -57,6 +57,14 @@ p
 	text-decoration: ;
 }
 
+img
+{
+	border: 1px solid;
+	box-shadow: #524d4d;
+	border-radius: 2px
+
+}
+
 a
 {
 	outline: 1px dotted black;

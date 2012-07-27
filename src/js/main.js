@@ -39,7 +39,7 @@ VFW 1207 - Project 3
 	// Find value of radiobuttons   /  NOT USED ATM
 	function getSelectedRadio(){
 		var radio = document.forms[0].favorite;
-		for(var i=0; i<radio.length; i++){
+		for(var i=0, i<radio.length; i++){
 			if(radio[i].checked){
 			favoriteValue = radio[i].value;
 		}	
@@ -145,6 +145,7 @@ VFW 1207 - Project 3
 					makeSubList.appendChild(linksLi);
 			}
 			makeItemLinks(localStorage.key(i), linksLi); // Create edit/delete links for local storage.
+	}
 	}
 	
 	//Get image for the correct category/group of recipe
@@ -330,3 +331,4 @@ VFW 1207 - Project 3
 
 	var save = $('submit');
 	save.addEventListener("click", validate);
+	}
