@@ -69,16 +69,19 @@ a
 {
 	outline: 1px dotted black;
 	text-decoration: none;
+	margin-top: 2px;
 }
 
 a:hover
 {
 	color: black;
 	outline: none;
+	margin-top: 2px;
 }
 
 form
 {
+	margin: 10px 20px;
 	display:inline;
 	padding: 2px;
 	border: 1px solid;
